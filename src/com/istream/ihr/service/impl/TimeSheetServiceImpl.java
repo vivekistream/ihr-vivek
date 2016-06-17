@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+package com.istream.ihr.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.istream.ihr.orm.TimeSheet;
+import com.istream.ihr.service.TimeSheetService;
+import com.istream.ihr.vo.TimesheetDAO;
+import com.istream.ihr.vo.TimesheetSearch;
+
+/**
+ * @author Istream2
+ *
+ */
+@Service("timesheetService")
+public class TimeSheetServiceImpl implements TimeSheetService {
+	
+	@Autowired
+	private TimesheetDAO timesheetDAO;
+
+	/* (non-Javadoc)
+	 * @see com.istream.ihr.service.TimeSheetService#getTimeSheets(com.istream.ihr.vo.TimesheetSearch)
+	 */
+	@Override
+	public List<TimeSheet> getTimeSheets(TimesheetSearch searchRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.istream.ihr.service.TimeSheetService#submitTimeSheet(com.istream.ihr.vo.orm.TimeSheet)
+	 */
+	@Override
+	public void submitTimeSheet(TimeSheet timeSheet) {
+		this.timesheetDAO.saveTimeSheet(timeSheet);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.istream.ihr.service.TimeSheetService#approveTimeSheet(com.istream.ihr.vo.orm.TimeSheet)
+	 */
+	@Override
+	public void approveTimeSheet(TimeSheet timeSheet) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
