@@ -13,7 +13,7 @@ import com.istream.ihr.orm.Employee;
 import com.istream.ihr.orm.Project;
 import com.istream.ihr.orm.TimeSheet;
 import com.istream.ihr.service.TimeSheetService;
-import com.istream.ihr.vo.TimesheetSearch;
+import com.istream.ihr.vo.TimesheetSearchReq;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:E:\\GIT-Backup\\GIT-Workspace\\Istream\\integrate\\iHR\\WebContent\\WEB-INF\\applicationContext.xml" })
@@ -45,7 +45,7 @@ public class TimesheetTest {
 	
 	//@Test
 	public void getTimeSheets() {
-		TimesheetSearch searchRequest = new TimesheetSearch();
+		TimesheetSearchReq searchRequest = new TimesheetSearchReq();
 		searchRequest.setEmployeeId(125L);
 		searchRequest.setMonth(6);
 		searchRequest.setYear(2016);

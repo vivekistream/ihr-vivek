@@ -1,6 +1,7 @@
 package com.istream.ihr.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ import com.istream.ihr.orm.TimeSheet;
 import com.istream.ihr.service.TimeSheetService;
 import com.istream.ihr.vo.AddTimesheetReq;
 import com.istream.ihr.vo.AddTimesheetRes;
+import com.istream.ihr.vo.SearchEmployeeReq;
+import com.istream.ihr.vo.SearchEmployeeRes;
+import com.istream.ihr.vo.TimesheetSearchReq;
 
 @RestController
 public class TimeSheetController {
@@ -29,6 +33,13 @@ public class TimeSheetController {
 		TimeSheet timeSheet = convertReqToDao(addTimesheetReq);
 		AddTimesheetRes response = timesheetService.submitTimeSheet(timeSheet);		
         return new ResponseEntity<AddTimesheetRes>(response, HttpStatus.CREATED);
+    }
+	
+	
+	@RequestMapping(value = "/timesheet/search/", method = RequestMethod.POST, headers="Accept=application/json")
+    public ResponseEntity<List<TimeSheet>> searchEmployees(@RequestBody TimesheetSearchReq timesheetSearchReq) {    	
+		List<TimeSheet> timesheets = timesheetService.getTimeSheets(timesheetSearchReq);
+		 return new ResponseEntity<List<TimeSheet>>(timesheets, HttpStatus.OK);
     }
 
 	private TimeSheet convertReqToDao(AddTimesheetReq addTimesheetReq) {

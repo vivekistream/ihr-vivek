@@ -1,6 +1,6 @@
 package com.istream.ihr.vo;
 
-public class TimesheetSearch {
+public class TimesheetSearchReq {
 
 	Long employeeId;
 	

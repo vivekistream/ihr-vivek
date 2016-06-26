@@ -12,7 +12,7 @@ import com.istream.ihr.dao.TimesheetDAO;
 import com.istream.ihr.orm.TimeSheet;
 import com.istream.ihr.service.TimeSheetService;
 import com.istream.ihr.vo.AddTimesheetRes;
-import com.istream.ihr.vo.TimesheetSearch;
+import com.istream.ihr.vo.TimesheetSearchReq;
 
 /**
  * @author Istream2
@@ -28,7 +28,7 @@ public class TimeSheetServiceImpl implements TimeSheetService {
 	 * @see com.istream.ihr.service.TimeSheetService#getTimeSheets(com.istream.ihr.vo.TimesheetSearch)
 	 */
 	@Override
-	public List<TimeSheet> getTimeSheets(TimesheetSearch searchRequest) {
+	public List<TimeSheet> getTimeSheets(TimesheetSearchReq searchRequest) {
 		List<TimeSheet> timeSheets = this.timesheetDAO.getTimeSheets(searchRequest.getEmployeeId(),
 				searchRequest.getMonth(), searchRequest.getYear());	
 		return timeSheets;
