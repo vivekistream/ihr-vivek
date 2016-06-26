@@ -28,8 +28,9 @@ public class TimeSheetServiceImpl implements TimeSheetService {
 	 */
 	@Override
 	public List<TimeSheet> getTimeSheets(TimesheetSearch searchRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		List<TimeSheet> timeSheets = this.timesheetDAO.getTimeSheets(searchRequest.getEmployeeId(),
+				searchRequest.getMonth(), searchRequest.getYear());	
+		return timeSheets;
 	}
 
 	/* (non-Javadoc)

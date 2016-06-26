@@ -1,32 +1,30 @@
 package com.istream.ihr.vo;
 
-import java.util.Date;
-
 public class TimesheetSearch {
 
-	
-	Date startDate;
-	Date endDate;
 	Long employeeId;
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+	
+	Integer month;
+	
+	Integer year;
+	
 	public Long getEmployeeId() {
 		return employeeId;
 	}
 	public void setEmployeeId(Long employeeId) {
 		this.employeeId = employeeId;
 	}
-	
-	
+	public Integer getMonth() {
+		return month;
+	}
+	public void setMonth(Integer month) {
+		this.month = month;
+	}
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}	
 	
 }

@@ -27,41 +27,38 @@ public class TimeSheet implements java.io.Serializable {
 	private Integer timeSheetId;
 	private Employee employee;
 	private Project project;
-	private Date startDate;
-	private Date endDate;
+	private Date timeSheetDate;
 	private int billedHours;
 	private Integer nonBilledHours;
 	private String note;
+	private String description;
 	private String status;
 	private Date creationTs;
 	private Date lastUpdateTs;
-	private Set<TimeSheetTaskAs> timeSheetTaskAses = new HashSet<TimeSheetTaskAs>(0);
-
+	
 	public TimeSheet() {
 	}
 
-	public TimeSheet(Project project, Date startDate, int billedHours, Date creationTs, Date lastUpdateTs) {
+	public TimeSheet(Project project, Date timeSheetDate, int billedHours, Date creationTs, Date lastUpdateTs) {
 		this.project = project;
-		this.startDate = startDate;
+		this.timeSheetDate = timeSheetDate;
 		this.billedHours = billedHours;
 		this.creationTs = creationTs;
 		this.lastUpdateTs = lastUpdateTs;
 	}
 
-	public TimeSheet(Employee employee, Project project, Date startDate, Date endDate, int billedHours,
-			Integer nonBilledHours, String note, String status, Date creationTs, Date lastUpdateTs,
-			Set<TimeSheetTaskAs> timeSheetTaskAses) {
+	public TimeSheet(Employee employee, Project project, Date timeSheetDate, int billedHours,
+			Integer nonBilledHours, String note, String status, Date creationTs, Date lastUpdateTs, String description) {
 		this.employee = employee;
 		this.project = project;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.timeSheetDate = timeSheetDate;
 		this.billedHours = billedHours;
 		this.nonBilledHours = nonBilledHours;
 		this.note = note;
+		this.description = description;
 		this.status = status;
 		this.creationTs = creationTs;
-		this.lastUpdateTs = lastUpdateTs;
-		this.timeSheetTaskAses = timeSheetTaskAses;
+		this.lastUpdateTs = lastUpdateTs;		
 	}
 
 	@Id
@@ -77,7 +74,7 @@ public class TimeSheet implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Approver_id")
+	@JoinColumn(name = "Employee_id")
 	public Employee getEmployee() {
 		return this.employee;
 	}
@@ -97,23 +94,13 @@ public class TimeSheet implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "Start_Date", nullable = false, length = 0)
-	public Date getStartDate() {
-		return this.startDate;
+	@Column(name = "Time_sheet_date", nullable = false, length = 0)
+	public Date getTimeSheetDate() {
+		return timeSheetDate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "End_Date", length = 0)
-	public Date getEndDate() {
-		return this.endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setTimeSheetDate(Date timeSheetDate) {
+		this.timeSheetDate = timeSheetDate;
 	}
 
 	@Column(name = "Billed_Hours", nullable = false)
@@ -141,6 +128,15 @@ public class TimeSheet implements java.io.Serializable {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	@Column(name = "Description", length = 250)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Column(name = "Status", length = 2)
@@ -172,13 +168,14 @@ public class TimeSheet implements java.io.Serializable {
 		this.lastUpdateTs = lastUpdateTs;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "timeSheet")
-	public Set<TimeSheetTaskAs> getTimeSheetTaskAses() {
-		return this.timeSheetTaskAses;
+	@Override
+	public String toString() {
+		return "TimeSheet [timeSheetId=" + timeSheetId + ", employee=" + employee + ", project=" + project
+				+ ", timeSheetDate=" + timeSheetDate + ", billedHours=" + billedHours + ", nonBilledHours="
+				+ nonBilledHours + ", note=" + note + ", description=" + description + ", status=" + status
+				+ ", creationTs=" + creationTs + ", lastUpdateTs=" + lastUpdateTs + "]";
 	}
 
-	public void setTimeSheetTaskAses(Set<TimeSheetTaskAs> timeSheetTaskAses) {
-		this.timeSheetTaskAses = timeSheetTaskAses;
-	}
+	
 
 }
