@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.istream.ihr.dao.TimesheetDAO;
 import com.istream.ihr.orm.TimeSheet;
 import com.istream.ihr.service.TimeSheetService;
+import com.istream.ihr.vo.AddTimesheetRes;
 import com.istream.ihr.vo.TimesheetSearch;
 
 /**
@@ -37,8 +38,9 @@ public class TimeSheetServiceImpl implements TimeSheetService {
 	 * @see com.istream.ihr.service.TimeSheetService#submitTimeSheet(com.istream.ihr.vo.orm.TimeSheet)
 	 */
 	@Override
-	public void submitTimeSheet(TimeSheet timeSheet) {
+	public AddTimesheetRes submitTimeSheet(TimeSheet timeSheet) {
 		this.timesheetDAO.saveTimeSheet(timeSheet);
+		return new AddTimesheetRes();
 	}
 
 	/* (non-Javadoc)
