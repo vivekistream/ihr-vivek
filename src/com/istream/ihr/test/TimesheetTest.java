@@ -22,7 +22,7 @@ public class TimesheetTest {
 	@Autowired
 	TimeSheetService timesheetService;
 
-	//@Test
+	@Test
 	public void submitTimeSheet() {
 		 Employee employee = new Employee();
 		 employee.setEmployeeId(124);
@@ -43,7 +43,7 @@ public class TimesheetTest {
 
 	}
 	
-	@Test
+	//@Test
 	public void getTimeSheets() {
 		TimesheetSearch searchRequest = new TimesheetSearch();
 		searchRequest.setEmployeeId(125L);

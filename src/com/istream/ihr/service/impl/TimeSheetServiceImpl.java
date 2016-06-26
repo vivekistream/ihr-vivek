@@ -8,9 +8,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.istream.ihr.dao.TimesheetDAO;
 import com.istream.ihr.orm.TimeSheet;
 import com.istream.ihr.service.TimeSheetService;
-import com.istream.ihr.vo.TimesheetDAO;
 import com.istream.ihr.vo.TimesheetSearch;
 
 /**
