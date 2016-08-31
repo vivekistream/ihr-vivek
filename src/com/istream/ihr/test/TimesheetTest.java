@@ -39,6 +39,7 @@ public class TimesheetTest {
 			
 		TimeSheet timeSheet = new TimeSheet(employee, project, startDate, billedHours, nonBilledHours, note, status, 
 				creationTs, lastUpdateTs, description);
+		// Calling timesheet service
 		timesheetService.submitTimeSheet(timeSheet);
 
 	}
